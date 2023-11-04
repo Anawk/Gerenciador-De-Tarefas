@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table
-public class Usuario {
+public class Usuario{
 
     //Esta classe é responsavel pela autenticação do usuário
 
@@ -17,24 +17,27 @@ public class Usuario {
     @Column
     private String Username; //Nome de usuario do usuario
     @Column
-    private String Password; //Senha do usuario para login
+    private String  Password; //Senha do usuario para login
     @Column
     private String Email; // Correio eletronico do usuario para login
     @Column
     private String Nome; //Primeiro nome do usuario
     @Column
     private String Sobrenome; // Sobrenome do usuario
-    @Column
-    private ArrayList<Tarefa>tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
+
+    private static ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
 
 
     //construtor
-    public Usuario(String username, String password, String email, String nome, String sobrenome) {
+
+
+    public Usuario(String username, String password) {
         Username = username;
         Password = password;
-        Email = email;
-        Nome = nome;
-        Sobrenome = sobrenome;
+    }
+
+    public Usuario() {
+
     }
 
     //getters e setters
@@ -86,7 +89,7 @@ public class Usuario {
         Sobrenome = sobrenome;
     }
 
-    public ArrayList<Tarefa> getTarefas() {
+    public static ArrayList<Tarefa> getTarefas() {
         return tarefas;
     }
 

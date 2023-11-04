@@ -14,31 +14,49 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     private static Stage stagePrincipal;
     private  static  Scene cadastroScene;
+    private static Scene loginScene;
     private static Scene listaScene;
     @Override
     public void start(Stage stage) throws IOException {
         stagePrincipal = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("lista.fxml"));
-        Scene sceneLista = new Scene(fxmlLoader.load());
-        FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("cadastro.fxml"));
-        Scene sceneCadastro = new Scene(fxmlLoader2.load());
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("cadastro.fxml"));
+        Scene sceneCadastro = new Scene(fxmlLoader.load());
+        FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("lista.fxml"));
+        Scene sceneLista = new Scene(fxmlLoader2.load());
+
+        FXMLLoader fxmlLoader3 = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+        Scene sceneLogin = new Scene(fxmlLoader3.load());
         cadastroScene = sceneCadastro;
+        loginScene = sceneLogin;
         listaScene = sceneLista;
-        stage.setTitle("Hello!");
-        stage.setScene(sceneLista);
+        //stage.setTitle("Hello!");
+
+        stage.setScene(sceneLogin);
+        stage.setScene(sceneCadastro);
+
         stage.show();
     }
 
-    public static void mudaeTela(String tela){
+    public static void mudartela2(String tela){
         if (tela == "cadastro") {
             stagePrincipal.setScene(cadastroScene);
         }
         if (tela == "lista"){
             stagePrincipal.setScene(listaScene);
         }
+    }
 
+    public static void mudaeTela(String tela){
+        if (tela == "cadastro") {
+            stagePrincipal.setScene(cadastroScene);
+        }
+        if (tela == "login"){
+            stagePrincipal.setScene(loginScene);
+        }
 
     }
+
+
 
 
 

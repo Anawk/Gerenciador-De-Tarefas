@@ -3,17 +3,19 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.ListaControler">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.ListaControler">
    <children>
-      <Label layoutX="165.0" layoutY="181.0" text="Listagem do cadastro">
+      <Label layoutX="168.0" layoutY="32.0" text="Listagem de Tarefas">
          <font>
             <Font name="Lato Bold Italic" size="30.0" />
          </font>
       </Label>
-      <Button layoutX="243.0" layoutY="55.0" mnemonicParsing="false" onAction="#clickadd" text="Adicionar Item">
+      <Button layoutX="59.0" layoutY="116.0" mnemonicParsing="false" onAction="#clickadd" prefHeight="45.0" prefWidth="176.0" text="Adicionar ">
          <opaqueInsets>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </opaqueInsets>
@@ -21,5 +23,12 @@
             <Font name="Lato Bold Italic" size="15.0" />
          </font>
       </Button>
+      <Button layoutX="59.0" layoutY="193.0" mnemonicParsing="false" onAction="#clickEditar" prefHeight="45.0" prefWidth="176.0" text="Editar" />
+      <Button layoutX="59.0" layoutY="264.0" mnemonicParsing="false" onAction="#clickExcluir" prefHeight="45.0" prefWidth="176.0" text="Excluir" />
+      <TableView fx:id="tableview" layoutX="266.0" layoutY="116.0" prefHeight="200.0" prefWidth="303.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

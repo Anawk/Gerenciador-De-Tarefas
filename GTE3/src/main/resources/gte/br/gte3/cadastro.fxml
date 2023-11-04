@@ -6,22 +6,28 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.CadastroControler">
-   <bottom>
-      <Button mnemonicParsing="false" onAction="#clickCadastro" text="Cadastro" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="Lato Bold Italic" size="20.0" />
-         </font>
-      </Button>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.CadastroControler">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="usuario" layoutX="219.0" layoutY="95.0" />
-            <TextField fx:id="senha" layoutX="219.0" layoutY="197.0" />
-            <Label layoutX="278.0" layoutY="53.0" text="NOME" />
+            <TextField fx:id="usuario" layoutX="169.0" layoutY="116.0" prefHeight="31.0" prefWidth="285.0" />
+            <TextField fx:id="senha" layoutX="169.0" layoutY="190.0" prefHeight="31.0" prefWidth="289.0" />
+            <Label layoutX="276.0" layoutY="53.0" text="LOGIN">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
             <Label fx:id="aviso" layoutX="212.0" layoutY="121.0" textFill="RED" />
+            <Button layoutX="263.0" layoutY="250.0" mnemonicParsing="false" onAction="#clickEntrar" text="ENTRAR">
+               <font>
+                  <Font name="Lato Bold Italic" size="20.0" />
+               </font>
+            </Button>
+            <Text layoutX="171.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuário" />
+            <Text layoutX="171.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
+            <Text layoutX="149.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Não possuí login, clique em" wrappingWidth="188.28857421875" />
+            <Button layoutX="346.0" layoutY="321.0" mnemonicParsing="false" onAction="#clickCadastrar" text="Cadastrar-se" />
          </children>
       </Pane>
    </center>

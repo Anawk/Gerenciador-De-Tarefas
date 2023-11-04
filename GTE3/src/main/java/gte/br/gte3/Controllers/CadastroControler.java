@@ -17,15 +17,43 @@ public class CadastroControler {
     @FXML
     private Label aviso;
 
+    private static Usuario usuarioLogado;
+
     @FXML
-    void clickCadastro(ActionEvent event) {
+    void clickCadastrar(ActionEvent event) {
+        HelloApplication.mudaeTela("login");
+
+    }
+
+
+    @FXML
+    void clickEntrar(ActionEvent event) {
         String user = usuario.getText();
         String password = senha.getText();
+        Usuario u = verificarUsuarioNoBanco(user, password);
 
-        if(user.equals("igor") && password.equals("123"))
+        if (u != null) {
+            usuarioLogado = u; // Armazena o usuário logado na variável estática
             System.out.println("Login realizado com sucesso");
-        else
+            HelloApplication.mudartela2("lista");
+
+        } else {
             aviso.setText("Login inválido!");
+        }
+    }
+    private Usuario verificarUsuarioNoBanco(String user, String password) {
+        if (user.equals("igor") && password.equals("123")) {
+            return new Usuario("igor", "123"); // Supondo que Usuario tenha um construtor apropriado
+        }
+
+        return null;
+    }
+}
+
+    // if(user.equals("igor") && password.equals("123"))
+          //  System.out.println("Login realizado com sucesso");
+        //else
+          //  aviso.setText("Login inválido!");
 
 //        Usuario u = session.createQuery("select * from usuario where user = "+user+" and senha = "+ password);
 //
@@ -33,9 +61,9 @@ public class CadastroControler {
 //            //mostrar ususario n encontado
 //        else
 //            //reALIZAR O LOGIN
-        System.out.println(user);
-        System.out.println(password);
-        //HelloApplication.mudaeTela("lista");
-    }
+//        System.out.println(user);
+//        System.out.println(password);
+//        //HelloApplication.mudaeTela("lista");
 
-}
+
+
