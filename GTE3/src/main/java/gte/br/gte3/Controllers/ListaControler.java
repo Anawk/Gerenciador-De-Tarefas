@@ -1,5 +1,6 @@
 package gte.br.gte3.Controllers;
 
+import gte.br.gte3.HelloApplication;
 import gte.br.gte3.Model.Tarefa;
 import gte.br.gte3.Model.Usuario;
 import javafx.collections.FXCollections;
@@ -23,6 +24,12 @@ public class ListaControler {
 
 
     }
+
+    @FXML
+    void clickCategorizacao(ActionEvent event) {
+        HelloApplication.mudaeTela3("categorizacao");
+    }
+
 
     @FXML
     void clickEditar(ActionEvent event) {

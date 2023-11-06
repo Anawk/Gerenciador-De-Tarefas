@@ -1,5 +1,6 @@
 package gte.br.gte3.Controllers;
 
+import gte.br.gte3.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
@@ -12,6 +13,12 @@ public class CategorizacaoControler {
     @FXML
     private TableView<?> Tablecat;
 
+
+    @FXML
+    void clickVoltar(ActionEvent event) {
+        HelloApplication.mudaeTela4("lista");
+
+    }
     @FXML
     void ClickAdicionarCategoria(ActionEvent event) {
 

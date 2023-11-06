@@ -7,19 +7,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="710.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.CategorizacaoControler">
    <children>
       <TableView fx:id="TableDisci" layoutX="75.0" layoutY="143.0" prefHeight="410.0" prefWidth="323.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="102.0" text="Nome" />
+          <TableColumn prefWidth="220.0" text="Tarefas" />
         </columns>
       </TableView>
       <TableView fx:id="Tablecat" layoutX="457.0" layoutY="143.0" prefHeight="410.0" prefWidth="323.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="105.0" text="Nome" />
+          <TableColumn prefWidth="217.0" text="Tarefas" />
         </columns>
       </TableView>
       <Text layoutX="252.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CATEGORIZAÇÃO">
@@ -35,5 +34,6 @@
       <Button layoutX="703.0" layoutY="574.0" mnemonicParsing="false" onAction="#ClickExcluirCategoria" text="EXCLUIR" />
       <Text layoutX="189.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DISCIPLINA" />
       <Text layoutX="597.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CATEGORIA" />
+      <Button layoutX="27.0" layoutY="665.0" mnemonicParsing="false" onAction="#clickVoltar" prefHeight="31.0" prefWidth="95.0" text="Voltar" />
    </children>
 </AnchorPane>
