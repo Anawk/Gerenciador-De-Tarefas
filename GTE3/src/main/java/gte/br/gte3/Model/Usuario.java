@@ -31,9 +31,12 @@ public class Usuario{
     //construtor
 
 
-    public Usuario(String username, String password) {
+    public Usuario(String username, String password, String email, String nome, String sobrenome) {
         Username = username;
         Password = password;
+        Email = email;
+        Nome = nome;
+        Sobrenome = sobrenome;
     }
 
     public Usuario() {

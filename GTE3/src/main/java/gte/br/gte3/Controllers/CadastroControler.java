@@ -2,11 +2,12 @@ package gte.br.gte3.Controllers;
 
 import gte.br.gte3.HelloApplication;
 import gte.br.gte3.Model.Usuario;
+import jakarta.persistence.Query;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
+import org.hibernate.Session;
 public class CadastroControler {
     @FXML
     private TextField senha;
@@ -28,9 +29,9 @@ public class CadastroControler {
 
     @FXML
     void clickEntrar(ActionEvent event) {
-        String user = usuario.getText();
+        String username = usuario.getText();
         String password = senha.getText();
-        Usuario u = verificarUsuarioNoBanco(user, password);
+        Usuario u = verificarUsuarioNoBanco(username, password);
 
         if (u != null) {
             usuarioLogado = u; // Armazena o usuário logado na variável estática
@@ -41,13 +42,18 @@ public class CadastroControler {
             aviso.setText("Login inválido!");
         }
     }
-    private Usuario verificarUsuarioNoBanco(String user, String password) {
-        if (user.equals("igor") && password.equals("123")) {
-            return new Usuario("igor", "123"); // Supondo que Usuario tenha um construtor apropriado
-        }
 
-        return null;
+    private Session session;
+    public Usuario verificarUsuarioNoBanco(String username, String password) {
+        String hql = "FROM Usuario u WHERE u.user = :user AND u.password = :password ";
+        Query query = session.createQuery(hql);
+        query.setParameter("user",username);
+        query.setParameter("password",password);
+        Usuario usuario = (Usuario) query.getResultList().get(0);
+
+        return usuario;
     }
+
 }
 
     // if(user.equals("igor") && password.equals("123"))

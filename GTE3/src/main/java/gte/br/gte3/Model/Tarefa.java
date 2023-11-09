@@ -26,9 +26,12 @@ public class Tarefa {
     private Date DataInicio; // Data em que se iniciou a Tarefa
     @Column
     private Date DataVencimento; // Data em que a tarefa é fechada
-    @Column
+
+    @ManyToOne
+    @JoinColumn(name = "Disciplina")
     private Disciplina disciplina; // Discliplina asssociada
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "Categoria")
     private Categoria categoria; // Categoria asssociada
     @Column
     private LocalDateTime dataConclusao; //

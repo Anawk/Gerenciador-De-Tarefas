@@ -11,14 +11,14 @@
    <children>
       <TableView fx:id="TableDisci" layoutX="75.0" layoutY="143.0" prefHeight="410.0" prefWidth="323.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="102.0" text="Nome" />
+          <TableColumn prefWidth="220.0" text="Tarefas" />
         </columns>
       </TableView>
       <TableView fx:id="Tablecat" layoutX="457.0" layoutY="143.0" prefHeight="410.0" prefWidth="323.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="105.0" text="Nome" />
+          <TableColumn prefWidth="217.0" text="Tarefas" />
         </columns>
       </TableView>
       <Text layoutX="252.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CATEGORIZAÇÃO">

@@ -13,7 +13,9 @@ public class Categoria {
     private Long id; //Chave identificadora de Categoria
     @Column
     private String nome; //Nome da categoria
-    @Column
+
+    @OneToMany
+    @JoinColumn(name = "Categoria")
     private ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
 
     //construtor

@@ -13,7 +13,8 @@ public class Disciplina {
     private Long id; //Chave identificadora do usuario
     @Column
     private String nome; //Nome da Disciplina
-    @Column
+    @OneToMany
+    @JoinColumn(name = "Disciplina")
     private ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
 
 
