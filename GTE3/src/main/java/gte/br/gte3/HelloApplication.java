@@ -1,5 +1,6 @@
 package gte.br.gte3;
 
+import gte.br.gte3.Model.Tarefa;
 import gte.br.gte3.Model.Usuario;
 import gte.br.gte3.Util.HibernateUtil;
 import javafx.application.Application;
@@ -23,6 +24,10 @@ public class HelloApplication extends Application {
     private static Scene adicionardisScene;
     private static Scene editardisScene;
     private static Scene excluirdisScene;
+
+    private static Scene adicionarScene;
+
+    private static Tarefa tarefaAtiva;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -57,6 +62,9 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader10 = new FXMLLoader(HelloApplication.class.getResource("excluircat.fxml"));
         Scene sceneExcluirCat = new Scene(fxmlLoader10.load());
 
+        FXMLLoader fxmlLoader11 = new FXMLLoader(HelloApplication.class.getResource("adicionar.fxml"));
+        Scene sceneAdicionar = new Scene(fxmlLoader11.load());
+
         excluircatScene = sceneExcluirCat;
         editarcatScene = sceneEditarCat;
         adicionarcatScene = sceneAdicionarCat;
@@ -67,6 +75,7 @@ public class HelloApplication extends Application {
         cadastroScene = sceneCadastro;
         loginScene = sceneLogin;
         listaScene = sceneLista;
+        adicionarScene = sceneAdicionar;
         //stage.setTitle("Hello!");
         stage.setScene(sceneCategorizacao);
         stage.setScene(sceneLogin);
@@ -76,6 +85,15 @@ public class HelloApplication extends Application {
     }
 
     public static void mudaeTela(String tela) {
+        if (tela == "cadastro") {
+            stagePrincipal.setScene(cadastroScene);
+        }
+        if (tela == "login") {
+            stagePrincipal.setScene(loginScene);
+        }
+    }
+    public static void mudaeTela(String tela, Tarefa tarefa) {
+        tarefaAtiva = tarefa;
         if (tela == "cadastro") {
             stagePrincipal.setScene(cadastroScene);
         }
@@ -106,6 +124,24 @@ public class HelloApplication extends Application {
                 if (tela == "lista"){
                     stagePrincipal.setScene(listaScene);
                 }
+    }
+
+    public static void mudaeTela5(String tela) {
+        if (tela == "lista") {
+            stagePrincipal.setScene(listaScene);
+        }
+        if (tela == "adicionar") {
+            stagePrincipal.setScene(adicionarScene);
+        }
+    }
+
+    public static void mudaeTela6(String tela) {
+        if (tela == "adcionar") {
+            stagePrincipal.setScene(adicionarScene);
+        }
+        if (tela == "lista") {
+            stagePrincipal.setScene(listaScene);
+        }
     }
 
 

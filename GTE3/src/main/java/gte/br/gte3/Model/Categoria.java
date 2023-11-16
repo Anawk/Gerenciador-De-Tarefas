@@ -14,13 +14,15 @@ public class Categoria {
     @Column
     private String nome; //Nome da categoria
 
-    @OneToMany
-    @JoinColumn(name = "Categoria")
-    private ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
+//    @OneToMany
+//    @JoinColumn(name = "Categoria")
+//    private ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
 
     //construtor
     public Categoria(String nome) {
         this.nome = nome;
+    }
+    public Categoria(){
     }
 
     //getters e setters
@@ -40,20 +42,16 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public ArrayList<Tarefa> getTarefas() {
-        return tarefas;
-    }
-
-    public void setTarefas(ArrayList<Tarefa> tarefas) {
-        this.tarefas = tarefas;
-    }
+//    public ArrayList<Tarefa> getTarefas() {
+//        return tarefas;
+//    }
+//
+//    public void setTarefas(ArrayList<Tarefa> tarefas) {
+//        this.tarefas = tarefas;
+//    }
 
     @Override
     public String toString() {
-        return "Categoria{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", tarefas=" + tarefas +
-                '}';
+        return nome;
     }
 }

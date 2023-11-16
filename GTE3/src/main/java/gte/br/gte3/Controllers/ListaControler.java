@@ -5,12 +5,16 @@ import gte.br.gte3.Model.Categoria;
 import gte.br.gte3.Model.Disciplina;
 import gte.br.gte3.Model.Tarefa;
 import gte.br.gte3.Model.Usuario;
+import gte.br.gte3.Services.TarefaService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ListaControler {
+public class ListaControler implements Initializable {
 
     @FXML
     private TableColumn<Tarefa, String> colTitulo;
@@ -42,11 +46,34 @@ public class ListaControler {
     private TableColumn<Tarefa, String> colStatus;
 
 
-    TabelaService tabelsService = new TabelaService();
+    TarefaService tabelsService = new TarefaService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         mostrarTarefas();
+    }
+
+    public void mostrarTarefas() {
+        tableview.setItems(FXCollections.observableArrayList());
+        ObservableList<Tarefa> list = getTarefas();
+        tableview.setItems(list);
+        colTitulo.setCellValueFactory(new PropertyValueFactory<Tarefa, String>("Titulo"));
+        colDescricao.setCellValueFactory(new PropertyValueFactory<Tarefa, String>("Descricao"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<Tarefa, String>("Status"));
+        colDataInicio.setCellValueFactory(new PropertyValueFactory<Tarefa, Date>("DataInicio"));
+        colDataVencimento.setCellValueFactory(new PropertyValueFactory<Tarefa, Date>("DataVencimento"));
+       colCategoria.setCellValueFactory(new PropertyValueFactory<Tarefa, Categoria>("categoria"));
+     colDisciplina.setCellValueFactory(new PropertyValueFactory<Tarefa, Disciplina>("disciplina"));
+    }
+
+        public ObservableList<Tarefa> getTarefas(){
+        ObservableList<Tarefa> consults = FXCollections.observableArrayList();
+//        List<Tarefa> tarefaList = new ArrayList<>();
+//        Tarefa p = new Tarefa("naog", "sff", "sffdg", new Date("2023-09-04"), new Date("2023-09-04"), new Disciplina("dslgmsldgm"), new Categoria("fsdfsdfg"));
+//        tarefaList.add(p);
+        consults.addAll(TarefaService.listaTarefa());
+        return consults;
+        //return FXCollections.observableArrayList(TarefaService.listaTarefa());
     }
 
 
@@ -78,10 +105,13 @@ public class ListaControler {
     }
 
     @FXML
+    void getData(MouseEvent event) {
+    }
+
+    @FXML
     void clickadd(ActionEvent event) {
-//        Tarefa tarefa = new Tarefa("Título","Descrição","Status","DataInicio","DataVencimento","Discliplina", "Categoria","DataConclusão");
-//        listadetarefas.add(novaTarefa); // Adicione a nova tarefa à lista
-//        tableview.getItems().setAll(listadetarefas); // Atualize a TableView
+       HelloApplication.mudaeTela5("adicionar");
+
     }
 
 }

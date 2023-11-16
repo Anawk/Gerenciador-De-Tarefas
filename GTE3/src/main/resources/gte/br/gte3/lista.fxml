@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="659.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.ListaControler">
+<AnchorPane prefHeight="659.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.ListaControler">
    <children>
       <Label layoutX="387.0" layoutY="28.0" text="Listagem de Tarefas">
          <font>
@@ -27,13 +27,13 @@
       <Button layoutX="59.0" layoutY="400.0" mnemonicParsing="false" onAction="#clickExcluir" prefHeight="70.0" prefWidth="176.0" text="Excluir" />
       <TableView fx:id="tableview" layoutX="266.0" layoutY="116.0" prefHeight="410.0" prefWidth="662.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Título" />
-            <TableColumn prefWidth="75.0" text="Descrição" />
-            <TableColumn prefWidth="82.0" text="Status" />
-            <TableColumn minWidth="9.0" prefWidth="106.0" text="Data De Inicio" />
-            <TableColumn prefWidth="131.0" text="Data Vencimento" />
-            <TableColumn prefWidth="89.0" text="Disciplina" />
-            <TableColumn prefWidth="103.0" text="Categoria" />
+          <TableColumn fx:id="colTitulo" prefWidth="75.0" text="Título" />
+            <TableColumn fx:id="colDescricao" prefWidth="75.0" text="Descrição" />
+            <TableColumn fx:id="colStatus" prefWidth="82.0" text="Status" />
+            <TableColumn fx:id="colDataInicio" minWidth="9.0" prefWidth="106.0" text="Data De Inicio" />
+            <TableColumn fx:id="colDataVencimento" prefWidth="131.0" text="Data Vencimento" />
+            <TableColumn fx:id="colDisciplina" prefWidth="89.0" text="Disciplina" />
+            <TableColumn fx:id="colCategoria" prefWidth="103.0" text="Categoria" />
         </columns>
       </TableView>
       <Button layoutX="443.0" layoutY="562.0" mnemonicParsing="false" onAction="#clickCategorizacao" prefHeight="45.0" prefWidth="362.0" text="Categorização" />

@@ -13,14 +13,17 @@ public class Disciplina {
     private Long id; //Chave identificadora do usuario
     @Column
     private String nome; //Nome da Disciplina
-    @OneToMany
-    @JoinColumn(name = "Disciplina")
-    private ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
+//    @OneToMany
+//    @JoinColumn(name = "Disciplina")
+//    private ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
 
 
     //construtor
     public Disciplina(String nome) {
         this.nome = nome;
+    }
+
+    public Disciplina(){
     }
 
     //getters e setters
@@ -40,20 +43,16 @@ public class Disciplina {
         this.nome = nome;
     }
 
-    public ArrayList<Tarefa> getTarefas() {
-        return tarefas;
-    }
-
-    public void setTarefas(ArrayList<Tarefa> tarefas) {
-        this.tarefas = tarefas;
-    }
+//    public ArrayList<Tarefa> getTarefas() {
+//        return tarefas;
+//    }
+//
+//    public void setTarefas(ArrayList<Tarefa> tarefas) {
+//        this.tarefas = tarefas;
+//    }
 
     @Override
     public String toString() {
-        return "Disciplina{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", tarefas=" + tarefas +
-                '}';
+        return  nome;
     }
 }

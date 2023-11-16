@@ -39,9 +39,10 @@ public class Tarefa {
 
 
     //construtores
+    public Tarefa(){
+    }
 
-    public Tarefa(String titulo, String descricao, String status, Date dataInicio, Date dataVencimento, Disciplina disciplina, Categoria categoria, LocalDateTime
-            dataConclusao) {
+    public Tarefa(String titulo, String descricao, String status, Date dataInicio, Date dataVencimento, Disciplina disciplina, Categoria categoria) {
         Titulo = titulo;
         Descricao = descricao;
         Status = status;
@@ -49,7 +50,7 @@ public class Tarefa {
         DataVencimento = dataVencimento;
         this.disciplina = disciplina;
         this.categoria = categoria;
-        this.dataConclusao = dataConclusao;
+
     }
 
 
