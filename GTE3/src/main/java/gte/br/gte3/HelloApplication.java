@@ -99,37 +99,30 @@ public class HelloApplication extends Application {
                 stagePrincipal.setScene(categorizacaoScene);
             }
         }
-            public static void mudaeTela4(String tela) {
+            public static void mudaeTela4(String tela){
                 if (tela == "categorizacao") {
                     stagePrincipal.setScene(categorizacaoScene);
                 }
-                if (tela == "lista") {
+                if (tela == "lista"){
                     stagePrincipal.setScene(listaScene);
                 }
-            }
-
-                public static void mudaeTela5(String tela){
-                    if (tela == "login") {
-                        stagePrincipal.setScene(loginScene);
-                    }
-                    if (tela == "lista"){
-                        stagePrincipal.setScene(listaScene);
-                    }
-
     }
 
-    @Override
-    public void init() throws Exception {
-//        Usuario u = new Usuario("gabriel", "456","");
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
 
-       // session.persist(u);
-        transaction.commit();
 
-        Usuario usuario = session.get(Usuario.class, 1);
-        System.out.println(usuario.toString());
-    }
+
+    //    @Override
+//    public void init() throws Exception {
+////        Usuario u = new Usuario("Gustavo", "123","wduibfiuw","Gustavo", "emiliano");
+////        Session session = HibernateUtil.getSessionFactory().openSession();
+////        Transaction transaction = session.beginTransaction();
+////
+////        session.persist(u);
+////        transaction.commit();
+////
+////        Usuario usuario = session.get(Usuario.class, 1);
+////        System.out.println(usuario.toString());
+//    }
 
     public static void main(String[] args) {
         launch();

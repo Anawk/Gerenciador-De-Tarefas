@@ -5,9 +5,9 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/GTE</property>
-        <property name="connection.username">estudante1</property>
-        <property name="connection.password">123</property>
+        <property name="connection.url">jdbc:mysql://localhost/database</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
         <!-- Select our SQL dialect -->
@@ -25,12 +25,5 @@
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         <mapping class="gte.br.gte3.Model.Usuario" />
-        <mapping class="gte.br.gte3.Model.Tarefa" />
-        <mapping class="gte.br.gte3.Model.Relatorio" />
-        <mapping class="gte.br.gte3.Model.Disciplina" />
-        <mapping class="gte.br.gte3.Model.Categoria" />
-
-
-
     </session-factory>
 </hibernate-configuration>
