@@ -144,6 +144,15 @@ public class HelloApplication extends Application {
         }
     }
 
+    public static void mudaeTela7(String tela) {
+        if (tela == "login") {
+            stagePrincipal.setScene(loginScene);
+        }
+        if (tela == "lista") {
+            stagePrincipal.setScene(listaScene);
+        }
+    }
+
 
 
 
