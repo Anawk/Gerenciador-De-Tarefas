@@ -18,7 +18,7 @@
          </image>
       </ImageView>
       <Button layoutX="305.0" layoutY="253.0" mnemonicParsing="false" onAction="#clickSalvarCat" prefHeight="31.0" prefWidth="101.0" text="Salvar" />
-      <TextField layoutX="173.0" layoutY="194.0" prefHeight="31.0" prefWidth="366.0" />
+      <TextField fx:id="nome" layoutX="173.0" layoutY="194.0" prefHeight="31.0" prefWidth="366.0" />
       <Text fill="WHITE" layoutX="173.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
          <font>
             <Font size="18.0" />

@@ -1,31 +1,32 @@
 package gte.br.gte3.Model;
 
 import jakarta.persistence.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table
 public class Categoria {
-
-    //Esta classe é responsavel por categorizar tarefas de forma genérica
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //Chave identificadora de Categoria
-    @Column
-    private String nome; //Nome da categoria
+    private Long id;
 
-//    @OneToMany
-//    @JoinColumn(name = "Categoria")
-//    private ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
+    private String nome;
 
-    //construtor
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private List<Tarefa> disciplinas;
+
+
+    private List<String> tarefas;
+
+
     public Categoria(String nome) {
         this.nome = nome;
     }
-    public Categoria(){
-    }
 
-    //getters e setters
+
     public Long getId() {
         return id;
     }
@@ -42,16 +43,19 @@ public class Categoria {
         this.nome = nome;
     }
 
-//    public ArrayList<Tarefa> getTarefas() {
-//        return tarefas;
-//    }
-//
-//    public void setTarefas(ArrayList<Tarefa> tarefas) {
-//        this.tarefas = tarefas;
-//    }
+    public List<Tarefa> getDisciplinas() {
+        return disciplinas;
+    }
 
-    @Override
-    public String toString() {
-        return nome;
+    public void setDisciplinas(List<Tarefa> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+    public List<String> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(List<String> tarefas) {
+        this.tarefas = tarefas;
     }
 }

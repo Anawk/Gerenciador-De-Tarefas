@@ -1,9 +1,12 @@
 package gte.br.gte3;
 
+import gte.br.gte3.Model.Categoria;
 import gte.br.gte3.Model.Tarefa;
 import gte.br.gte3.Model.Usuario;
 import gte.br.gte3.Util.HibernateUtil;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,10 +23,11 @@ public class HelloApplication extends Application {
     private static Scene categorizacaoScene;
     private static Scene adicionarcatScene;
     private static Scene editarcatScene;
-    private static Scene excluircatScene;
+
     private static Scene adicionardisScene;
     private static Scene editardisScene;
-    private static Scene excluirdisScene;
+
+
 
     private static Scene adicionarScene;
 
@@ -50,8 +54,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader6 = new FXMLLoader(HelloApplication.class.getResource("editardis.fxml"));
         Scene sceneEditarDis = new Scene(fxmlLoader6.load());
 
-        FXMLLoader fxmlLoader7 = new FXMLLoader(HelloApplication.class.getResource("excluirdis.fxml"));
-        Scene sceneExcluirDis = new Scene(fxmlLoader7.load());
+
 
         FXMLLoader fxmlLoader8 = new FXMLLoader(HelloApplication.class.getResource("adicionarcat.fxml"));
         Scene sceneAdicionarCat = new Scene(fxmlLoader8.load());
@@ -59,16 +62,13 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader9 = new FXMLLoader(HelloApplication.class.getResource("editarcat.fxml"));
         Scene sceneEditarCat = new Scene(fxmlLoader9.load());
 
-        FXMLLoader fxmlLoader10 = new FXMLLoader(HelloApplication.class.getResource("excluircat.fxml"));
-        Scene sceneExcluirCat = new Scene(fxmlLoader10.load());
 
         FXMLLoader fxmlLoader11 = new FXMLLoader(HelloApplication.class.getResource("adicionar.fxml"));
         Scene sceneAdicionar = new Scene(fxmlLoader11.load());
 
-        excluircatScene = sceneExcluirCat;
         editarcatScene = sceneEditarCat;
         adicionarcatScene = sceneAdicionarCat;
-        excluirdisScene = sceneExcluirDis;
+
         editardisScene = sceneEditarDis;
         adicionardisScene = sceneAdicionarDis;
         categorizacaoScene = sceneCategorizacao;
@@ -153,21 +153,42 @@ public class HelloApplication extends Application {
         }
     }
 
+    public static void mudaeTela8(String tela) {
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+        if (tela == "adicionardis") {
+            stagePrincipal.setScene(adicionardisScene);
+        }
+    }
 
+    public static void mudaeTela9(String tela) {
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+        if (tela == "adicionarcat") {
+            stagePrincipal.setScene(adicionarcatScene);
+        }
+    }
 
+    public static void mudaeTela10(String tela) {
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+        if (tela == "editarcat") {
+            stagePrincipal.setScene(editarcatScene);
+        }
+    }
 
-    //    @Override
-//    public void init() throws Exception {
-////        Usuario u = new Usuario("Gustavo", "123","wduibfiuw","Gustavo", "emiliano");
-////        Session session = HibernateUtil.getSessionFactory().openSession();
-////        Transaction transaction = session.beginTransaction();
-////
-////        session.persist(u);
-////        transaction.commit();
-////
-////        Usuario usuario = session.get(Usuario.class, 1);
-////        System.out.println(usuario.toString());
-//    }
+    public static void mudaeTela11(String tela) {
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+        if (tela == "editardis") {
+            stagePrincipal.setScene(editardisScene);
+        }
+    }
+
 
     public static void main(String[] args) {
         launch();

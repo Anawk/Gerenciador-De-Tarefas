@@ -68,12 +68,8 @@ public class ListaControler implements Initializable {
 
         public ObservableList<Tarefa> getTarefas(){
         ObservableList<Tarefa> consults = FXCollections.observableArrayList();
-//        List<Tarefa> tarefaList = new ArrayList<>();
-//        Tarefa p = new Tarefa("naog", "sff", "sffdg", new Date("2023-09-04"), new Date("2023-09-04"), new Disciplina("dslgmsldgm"), new Categoria("fsdfsdfg"));
-//        tarefaList.add(p);
         consults.addAll(TarefaService.listaTarefa());
         return consults;
-        //return FXCollections.observableArrayList(TarefaService.listaTarefa());
     }
 
 
@@ -84,7 +80,6 @@ public class ListaControler implements Initializable {
         List<Tarefa>listadetarefas = Usuario.getTarefas();
         ObservableList<Tarefa> tarefasObservaveis = FXCollections.observableArrayList(listadetarefas);
         tableview.setItems(tarefasObservaveis);
-
 
     }
 

@@ -1,32 +1,28 @@
 package gte.br.gte3.Model;
 
 import jakarta.persistence.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-import java.util.ArrayList;
-@Table
+import java.util.List;
+
 @Entity
+@Table
 public class Disciplina {
-
-    //Esta classe é responsavel por representar uma disciplina escolar
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //Chave identificadora do usuario
-    @Column
-    private String nome; //Nome da Disciplina
-//    @OneToMany
-//    @JoinColumn(name = "Disciplina")
-//    private ArrayList<Tarefa> tarefas; //Usuário terá uma lista de tarefas que precisará ser feita
+    private Long id;
 
+    private String nome;
 
-    //construtor
+    // Relacionamento com tarefas (assumindo que uma disciplina tem muitas tarefas)
+    @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
+    private List<Tarefa> tarefas;
+
     public Disciplina(String nome) {
         this.nome = nome;
     }
 
-    public Disciplina(){
-    }
-
-    //getters e setters
     public Long getId() {
         return id;
     }
@@ -43,16 +39,11 @@ public class Disciplina {
         this.nome = nome;
     }
 
-//    public ArrayList<Tarefa> getTarefas() {
-//        return tarefas;
-//    }
-//
-//    public void setTarefas(ArrayList<Tarefa> tarefas) {
-//        this.tarefas = tarefas;
-//    }
+    public List<Tarefa> getTarefas() {
+        return tarefas;
+    }
 
-    @Override
-    public String toString() {
-        return  nome;
+    public void setTarefas(List<Tarefa> tarefas) {
+        this.tarefas = tarefas;
     }
 }
