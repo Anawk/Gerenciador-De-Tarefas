@@ -33,12 +33,13 @@
          </fill>
       </Text>
       <TextField fx:id="titulo" layoutX="120.0" layoutY="71.0" prefHeight="30.0" prefWidth="450.0" promptText="Título da sua tarefa" />
-      <TextField fx:id="descrição" layoutX="120.0" layoutY="110.0" prefHeight="30.0" prefWidth="450.0" promptText="Descrição da sua tarefa" />
+      <TextField fx:id="descricao" layoutX="120.0" layoutY="110.0" prefHeight="30.0" prefWidth="450.0" promptText="Descrição da sua tarefa" />
       <TextField fx:id="status" layoutX="120.0" layoutY="152.0" prefHeight="31.0" prefWidth="450.0" promptText="Status da sua tarefa" />
       <Button layoutX="293.0" layoutY="355.0" mnemonicParsing="false" onAction="#clickAdicionar" prefHeight="31.0" prefWidth="105.0" text="ADICIONAR" />
       <DatePicker fx:id="dataVencimentoPicker" layoutX="118.0" layoutY="232.0" prefHeight="30.0" prefWidth="450.0" promptText="Escolha a data de vencimento" />
       <ComboBox fx:id="cbxCategoria" layoutX="118.0" layoutY="272.0" prefHeight="31.0" prefWidth="450.0" promptText="Escolha a categoria" />
       <DatePicker fx:id="dataInicioPicker" layoutX="118.0" layoutY="191.0" prefHeight="30.0" prefWidth="450.0" promptText="Escolha a data de inicio" />
       <ComboBox fx:id="cbxDisciplina" layoutX="118.0" layoutY="310.0" prefHeight="31.0" prefWidth="450.0" promptText="Escolha a disciplina" />
+
    </children>
 </Pane>

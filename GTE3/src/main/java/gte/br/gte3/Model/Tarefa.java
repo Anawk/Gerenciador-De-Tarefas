@@ -1,6 +1,10 @@
 package gte.br.gte3.Model;
 
+import gte.br.gte3.Util.HibernateUtil;
 import jakarta.persistence.*;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,10 +26,11 @@ public class Tarefa {
     private String Descricao; //Descrição da tarefa
     @Column
     private String Status; // Estado da tarefa, podendo ser concluída ou pendente
-    @Column
-    private Date DataInicio; // Data em que se iniciou a Tarefa
-    @Column
-    private Date DataVencimento; // Data em que a tarefa é fechada
+    @Column(columnDefinition = "DATE")
+    private LocalDate DataInicio;
+
+    @Column(columnDefinition = "DATE")
+    private LocalDate DataVencimento;
 
     @ManyToOne
     @JoinColumn(name = "Disciplina")
@@ -42,7 +47,7 @@ public class Tarefa {
     public Tarefa(){
     }
 
-    public Tarefa(String titulo, String descricao, String status, Date dataInicio, Date dataVencimento, Disciplina disciplina, Categoria categoria) {
+    public Tarefa(String titulo, String descricao, String status, LocalDate dataInicio, LocalDate dataVencimento, Disciplina disciplina, Categoria categoria) {
         Titulo = titulo;
         Descricao = descricao;
         Status = status;
@@ -53,6 +58,36 @@ public class Tarefa {
 
     }
 
+//    public static void salvarTarefa(Tarefa tarefa) {
+//        Transaction transaction = null;
+//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+//            transaction = session.beginTransaction();
+//            session.save(tarefa); // Salva a nova tarefa no banco de dados
+//            transaction.commit();
+//        } catch (HibernateException e) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//            e.printStackTrace();
+//            throw new RuntimeException("Erro ao salvar a tarefa no banco de dados.", e);
+//        }
+//    }
+//
+//
+//    public static void excluirTarefa(Tarefa tarefa) {
+//        Transaction transaction = null;
+//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+//            transaction = session.beginTransaction();
+//            session.delete(tarefa);
+//            transaction.commit();
+//        } catch (HibernateException e) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//            e.printStackTrace();
+//            throw new RuntimeException("Erro ao excluir a tarefa.", e);
+////        }
+//    }
 
     //getters
 
@@ -72,13 +107,7 @@ public class Tarefa {
         return Status;
     }
 
-    public Date getDataInicio() {
-        return DataInicio;
-    }
 
-    public Date getDataVencimento() {
-        return DataVencimento;
-    }
 
     public Disciplina getDisciplina() {
         return disciplina;
@@ -109,11 +138,19 @@ public class Tarefa {
         Status = status;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public LocalDate getDataInicio() {
+        return DataInicio;
+    }
+
+    public void setDataInicio(LocalDate dataInicio) {
         DataInicio = dataInicio;
     }
 
-    public void setDataVencimento(Date dataVencimento) {
+    public LocalDate getDataVencimento() {
+        return DataVencimento;
+    }
+
+    public void setDataVencimento(LocalDate dataVencimento) {
         DataVencimento = dataVencimento;
     }
 
@@ -179,6 +216,8 @@ public class Tarefa {
             return "Em Progresso";
         }
     }
+
+
 
 
     //ToString

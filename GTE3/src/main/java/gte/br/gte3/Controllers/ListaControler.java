@@ -6,21 +6,23 @@ import gte.br.gte3.Model.Disciplina;
 import gte.br.gte3.Model.Tarefa;
 import gte.br.gte3.Model.Usuario;
 import gte.br.gte3.Services.TarefaService;
+import gte.br.gte3.Util.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ListaControler implements Initializable {
 
@@ -51,7 +53,8 @@ public class ListaControler implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         mostrarTarefas();
-    }
+           }
+
 
     public void mostrarTarefas() {
         tableview.setItems(FXCollections.observableArrayList());
@@ -76,12 +79,29 @@ public class ListaControler implements Initializable {
     @FXML
     private TableView<Tarefa> tableview;
 
-    public void atualizarTabelaTarefas(){
-        List<Tarefa>listadetarefas = Usuario.getTarefas();
-        ObservableList<Tarefa> tarefasObservaveis = FXCollections.observableArrayList(listadetarefas);
-        tableview.setItems(tarefasObservaveis);
+    public void atualizarTabelaTarefas() {
+        List<Tarefa> listaDeTarefas = carregarTarefasDoBanco();
 
+        if (listaDeTarefas != null) {
+            ObservableList<Tarefa> tarefasObservaveis = FXCollections.observableArrayList(listaDeTarefas);
+            tableview.setItems(tarefasObservaveis);
+        } else {
+            // A lista de tarefas é null, trate conforme necessário
+            System.out.println("A lista de tarefas é null");
+            // Você pode lançar uma exceção ou realizar outra ação apropriada
+        }
     }
+
+    private List<Tarefa> carregarTarefasDoBanco() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<Tarefa> query = session.createQuery("FROM Tarefa", Tarefa.class);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
 
     @FXML
     void clickCategorizacao(ActionEvent event) {
@@ -99,6 +119,7 @@ public class ListaControler implements Initializable {
 
     }
 
+
     @FXML
     void getData(MouseEvent event) {
     }
@@ -106,7 +127,7 @@ public class ListaControler implements Initializable {
     @FXML
     void clickadd(ActionEvent event) {
        HelloApplication.mudaeTela5("adicionar");
-
+        atualizarTabelaTarefas();
     }
 
 }

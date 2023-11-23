@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.ArrayList;
@@ -37,18 +38,37 @@ public class CategorizacaoControler {
 
 
     @FXML
-    void ClickAdicionarCategoria(ActionEvent event) {
-        HelloApplication.mudaeTela9("adicionarcat");
+    void initialize() {
+        carregarDisciplinasETabelas();
+        carregarCategoriasETabelas();
     }
 
-    @FXML
-    void ClickExcluirCategoria(ActionEvent event) {
 
+
+    @FXML
+    void ClickAdicionarCategoria(ActionEvent event) {
+        HelloApplication.mudaeTela9("adicionarcat");
+        carregarCategoriasETabelas();
+    }
+
+
+
+
+    private void excluirEntidade(Object entidade) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.remove(entidade);
+            transaction.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            exibirAlertaErro("Erro ao excluir a entidade.");
+        }
     }
 
     @FXML
     void clickAdicionarDisciplina(ActionEvent event) {
-
+        HelloApplication.mudaeTela12("adicionardis");
+        carregarCategoriasETabelas();
     }
 
     @FXML
@@ -62,12 +82,74 @@ public class CategorizacaoControler {
     }
 
     @FXML
-    void clickExcluirDisciplina(ActionEvent event) {
+    void ClickExcluirCategoria(ActionEvent event) {
+        Categoria categoriaSelecionada = Tablecat.getSelectionModel().getSelectedItem();
+        if (categoriaSelecionada != null) {
+            excluirEntidade(categoriaSelecionada);
+            carregarCategoriasETabelas();
+        } else {
+            exibirAlertaSelecao();
+        }
+    }
 
+
+    @FXML
+    void clickExcluirDisciplina(ActionEvent event) {
+        Disciplina disciplinaSelecionada = TableDisci.getSelectionModel().getSelectedItem();
+        if (disciplinaSelecionada != null) {
+            excluirEntidade(disciplinaSelecionada);
+            carregarDisciplinasETabelas();
+        } else {
+            exibirAlertaSelecao();
+        }
+    }
+
+    private void exibirAlertaSelecao() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecione uma linha para excluir.");
+        alert.showAndWait();
     }
 
     @FXML
     void clickVoltar(ActionEvent event) {
+   HelloApplication.mudaeTela15("lista");
+    }
 
+    private void carregarDisciplinasETabelas() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<Disciplina> query = session.createQuery("FROM Disciplina", Disciplina.class);
+            List<Disciplina> disciplinas = query.list();
+            ObservableList<Disciplina> observableList = FXCollections.observableArrayList(disciplinas);
+            TableDisci.setItems(observableList);
+            nomeDis.setCellValueFactory(new PropertyValueFactory<>("nome")); // Substitua "nome" pelo atributo correto da sua classe Disciplina
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            exibirAlertaErro("Erro ao carregar disciplinas.");
+        }
+    }
+
+    private void carregarCategoriasETabelas() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<Categoria> query = session.createQuery("FROM Categoria", Categoria.class);
+            List<Categoria> categorias = query.list();
+            ObservableList<Categoria> observableList = FXCollections.observableArrayList(categorias);
+            Tablecat.setItems(observableList);
+            nomeCat.setCellValueFactory(new PropertyValueFactory<>("nome")); // Substitua "nome" pelo atributo correto da sua classe Categoria
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            exibirAlertaErro("Erro ao carregar categorias.");
+        }
+    }
+
+
+
+    private void exibirAlertaErro(String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 }

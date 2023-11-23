@@ -27,9 +27,9 @@ public class HelloApplication extends Application {
     private static Scene adicionardisScene;
     private static Scene editardisScene;
 
-
-
     private static Scene adicionarScene;
+
+
 
     private static Tarefa tarefaAtiva;
 
@@ -54,8 +54,6 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader6 = new FXMLLoader(HelloApplication.class.getResource("editardis.fxml"));
         Scene sceneEditarDis = new Scene(fxmlLoader6.load());
 
-
-
         FXMLLoader fxmlLoader8 = new FXMLLoader(HelloApplication.class.getResource("adicionarcat.fxml"));
         Scene sceneAdicionarCat = new Scene(fxmlLoader8.load());
 
@@ -65,6 +63,8 @@ public class HelloApplication extends Application {
 
         FXMLLoader fxmlLoader11 = new FXMLLoader(HelloApplication.class.getResource("adicionar.fxml"));
         Scene sceneAdicionar = new Scene(fxmlLoader11.load());
+
+
 
         editarcatScene = sceneEditarCat;
         adicionarcatScene = sceneAdicionarCat;
@@ -76,6 +76,7 @@ public class HelloApplication extends Application {
         loginScene = sceneLogin;
         listaScene = sceneLista;
         adicionarScene = sceneAdicionar;
+
         //stage.setTitle("Hello!");
         stage.setScene(sceneCategorizacao);
         stage.setScene(sceneLogin);
@@ -188,6 +189,47 @@ public class HelloApplication extends Application {
             stagePrincipal.setScene(editardisScene);
         }
     }
+
+
+    public static void mudaeTela12(String tela) {
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+        if (tela == "adicionardis") {
+            stagePrincipal.setScene(adicionardisScene);
+        }
+    }
+
+    public static void mudaeTela13(String tela) {
+        if (tela == "adicionarcat") {
+            stagePrincipal.setScene(adicionarcatScene);
+        }
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+    }
+
+
+    public static void mudaeTela14(String tela) {
+        if (tela == "adicionarcdis") {
+            stagePrincipal.setScene(adicionardisScene);
+        }
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+    }
+
+    public static void mudaeTela15(String tela) {
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+        if (tela == "lista") {
+            stagePrincipal.setScene(listaScene);
+        }
+    }
+
+
+
 
 
     public static void main(String[] args) {

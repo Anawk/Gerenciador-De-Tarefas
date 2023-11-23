@@ -31,6 +31,7 @@ public class Usuario{
     //construtor
 
 
+
     public Usuario(String username, String password, String email, String nome, String sobrenome) {
         Username = username;
         Password = password;
@@ -41,6 +42,13 @@ public class Usuario{
 
     public Usuario() {
 
+    }
+
+    public void removerTarefa(Tarefa tarefa) {
+        if (tarefas == null) {
+            tarefas = new ArrayList<>();
+        }
+        tarefas.remove(tarefa);
     }
 
     //getters e setters
@@ -96,9 +104,8 @@ public class Usuario{
         return tarefas;
     }
 
-    public void setTarefas(ArrayList<Tarefa> tarefas) {
-        this.tarefas = tarefas;
-    }
+
+
 
     @Override
     public String toString() {

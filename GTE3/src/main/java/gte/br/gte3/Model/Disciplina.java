@@ -23,6 +23,10 @@ public class Disciplina {
         this.nome = nome;
     }
 
+    public Disciplina(){
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,5 +49,12 @@ public class Disciplina {
 
     public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
+    }
+
+    @Override
+    public String toString() {
+        String result = "Disciplina{" + "nome='" + nome + '\'' + '}';
+        System.out.println(result);
+        return nome;
     }
 }

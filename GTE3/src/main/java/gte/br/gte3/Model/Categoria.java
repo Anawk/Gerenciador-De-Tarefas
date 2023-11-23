@@ -15,16 +15,11 @@ public class Categoria {
 
     private String nome;
 
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-    private List<Tarefa> disciplinas;
-
-
-    private List<String> tarefas;
-
-
     public Categoria(String nome) {
         this.nome = nome;
     }
+
+    public Categoria(){}
 
 
     public Long getId() {
@@ -43,19 +38,11 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public List<Tarefa> getDisciplinas() {
-        return disciplinas;
+    @Override
+    public String toString() {
+        String result = "Categoria{" + "nome='" + nome + '\'' + '}';
+        System.out.println(result);
+        return nome;
     }
 
-    public void setDisciplinas(List<Tarefa> disciplinas) {
-        this.disciplinas = disciplinas;
-    }
-
-    public List<String> getTarefas() {
-        return tarefas;
-    }
-
-    public void setTarefas(List<String> tarefas) {
-        this.tarefas = tarefas;
-    }
 }
