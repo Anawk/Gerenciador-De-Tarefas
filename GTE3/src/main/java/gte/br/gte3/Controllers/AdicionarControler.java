@@ -70,11 +70,16 @@ public class AdicionarControler implements Initializable {
         LocalDate dataInicio = dataInicioPicker.getValue();
         LocalDate dataVencimento = dataVencimentoPicker.getValue();
 
-
         Categoria categoriaSelecionada = cbxCategoria.getValue();
         Disciplina disciplinaSelecionada = cbxDisciplina.getValue();
 
         if (categoriaSelecionada != null && disciplinaSelecionada != null && dataInicio != null && dataVencimento != null) {
+            // Verifica se a data de vencimento é anterior à data de início
+            if (dataVencimento.isBefore(dataInicio)) {
+                exibirAlertaErro("Erro ao adicionar tarefa", "A data de vencimento não pode ser anterior à data de início.");
+                return;  // Não adiciona a tarefa e sai do método
+            }
+
             Tarefa t = new Tarefa(Titulo, Descricao, Status, dataInicio, dataVencimento, disciplinaSelecionada, categoriaSelecionada);
 
             try (Session s = HibernateUtil.getSessionFactory().openSession()) {
@@ -85,11 +90,16 @@ public class AdicionarControler implements Initializable {
                 e.printStackTrace();
                 exibirAlertaErro("Erro ao adicionar tarefa", "Ocorreu um erro ao adicionar a tarefa.");
             }
+
+            limparCampos(); // Limpar os campos após adicionar a tarefa
+            limparAlertaErro(); // Limpar o alerta de erro
+
             HelloApplication.mudartela2("lista");
         } else {
             exibirAlertaErro("Campos obrigatórios não preenchidos", "Por favor, preencha todos os campos obrigatórios.");
         }
     }
+
 
     private List<Categoria> buscarCategoriasNoBancoDeDados() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -121,4 +131,23 @@ public class AdicionarControler implements Initializable {
         alert.setContentText(mensagem);
         alert.showAndWait();
     }
+
+
+    private void limparCampos() {
+        titulo.clear();
+        descricao.clear();
+        status.clear();
+        dataInicioPicker.setValue(null);
+        dataVencimentoPicker.setValue(null);
+        cbxCategoria.setValue(null);
+        cbxDisciplina.setValue(null);
+    }
+
+    private void limparAlertaErro() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("");
+        alert.setHeaderText(null);
+        alert.setContentText("");
+    }
+
 }

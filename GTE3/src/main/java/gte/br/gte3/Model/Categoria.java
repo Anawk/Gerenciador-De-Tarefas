@@ -15,6 +15,9 @@ public class Categoria {
 
     private String nome;
 
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private List<Tarefa> tarefas;
+
     public Categoria(String nome) {
         this.nome = nome;
     }
@@ -36,6 +39,10 @@ public class Categoria {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Tarefa> getTarefas() {
+        return tarefas;
     }
 
     @Override

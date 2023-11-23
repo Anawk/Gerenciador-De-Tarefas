@@ -40,6 +40,9 @@ public class Tarefa {
     private Categoria categoria; // Categoria asssociada
     @Column
     private LocalDateTime dataConclusao; //
+
+
+
     private  boolean entregue;
 
 
@@ -58,36 +61,15 @@ public class Tarefa {
 
     }
 
-//    public static void salvarTarefa(Tarefa tarefa) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            transaction = session.beginTransaction();
-//            session.save(tarefa); // Salva a nova tarefa no banco de dados
-//            transaction.commit();
-//        } catch (HibernateException e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//            throw new RuntimeException("Erro ao salvar a tarefa no banco de dados.", e);
-//        }
-//    }
-//
-//
-//    public static void excluirTarefa(Tarefa tarefa) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            transaction = session.beginTransaction();
-//            session.delete(tarefa);
-//            transaction.commit();
-//        } catch (HibernateException e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//            throw new RuntimeException("Erro ao excluir a tarefa.", e);
-////        }
-//    }
+
+    public String getCategoria() {
+        return categoria != null ? categoria.getNome() : null;
+    }
+
+    // Getter para Disciplina
+    public String getDisciplina() {
+        return disciplina != null ? disciplina.getNome() : null;
+    }
 
     //getters
 
@@ -109,13 +91,6 @@ public class Tarefa {
 
 
 
-    public Disciplina getDisciplina() {
-        return disciplina;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
 
     public LocalDateTime getDataConclusao() {
         return dataConclusao;

@@ -77,7 +77,7 @@ public class HelloApplication extends Application {
         listaScene = sceneLista;
         adicionarScene = sceneAdicionar;
 
-        //stage.setTitle("Hello!");
+        stage.setTitle("GERENCIADOR DE TAREFAS");
         stage.setScene(sceneCategorizacao);
         stage.setScene(sceneLogin);
         stage.setScene(sceneCadastro);
@@ -228,6 +228,50 @@ public class HelloApplication extends Application {
         }
     }
 
+    public static void mudaeTela16(String tela) {
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+        if (tela == "editardis") {
+            stagePrincipal.setScene(editardisScene);
+        }
+    }
+
+    public static void mudaeTela17(String tela) {
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+        if (tela == "editarcat") {
+            stagePrincipal.setScene(editarcatScene);
+        }
+    }
+
+    public static void mudaeTela18(String tela) {
+        if (tela == "editardis") {
+            stagePrincipal.setScene(editardisScene);
+        }
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+    }
+
+    public static void mudaeTela19(String tela) {
+        if (tela == "login") {
+            stagePrincipal.setScene(loginScene);
+        }
+        if (tela == "cadastro") {
+            stagePrincipal.setScene(cadastroScene);
+        }
+    }
+
+    public static void mudaeTela20(String tela) {
+        if (tela == "lista") {
+            stagePrincipal.setScene(listaScene);
+        }
+        if (tela == "cadastro") {
+            stagePrincipal.setScene(cadastroScene);
+        }
+    }
 
 
 

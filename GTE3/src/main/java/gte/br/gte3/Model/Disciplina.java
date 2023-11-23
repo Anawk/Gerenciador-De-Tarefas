@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,8 @@ public class Disciplina {
     // Relacionamento com tarefas (assumindo que uma disciplina tem muitas tarefas)
     @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
     private List<Tarefa> tarefas;
+
+
 
     public Disciplina(String nome) {
         this.nome = nome;
@@ -47,9 +50,6 @@ public class Disciplina {
         return tarefas;
     }
 
-    public void setTarefas(List<Tarefa> tarefas) {
-        this.tarefas = tarefas;
-    }
 
     @Override
     public String toString() {

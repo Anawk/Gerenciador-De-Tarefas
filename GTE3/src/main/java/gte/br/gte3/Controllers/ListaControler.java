@@ -4,7 +4,6 @@ import gte.br.gte3.HelloApplication;
 import gte.br.gte3.Model.Categoria;
 import gte.br.gte3.Model.Disciplina;
 import gte.br.gte3.Model.Tarefa;
-import gte.br.gte3.Model.Usuario;
 import gte.br.gte3.Services.TarefaService;
 import gte.br.gte3.Util.HibernateUtil;
 import javafx.collections.FXCollections;
@@ -12,9 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.hibernate.HibernateException;
@@ -47,37 +44,52 @@ public class ListaControler implements Initializable {
     @FXML
     private TableColumn<Tarefa, String> colStatus;
 
+    @FXML
+    private Button atualizar;
+
+    @FXML
+    private Button logout;
+
+    @FXML
+    private TableView<Tarefa> tableview;
 
     TarefaService tabelsService = new TarefaService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         mostrarTarefas();
-           }
+    }
 
+    @FXML
+    void clickLogot(ActionEvent event) {
+      HelloApplication.mudaeTela20("cadastro");
+    }
+
+
+    @FXML
+    void clickAtualizar(ActionEvent event) {
+        atualizarTabelaTarefas();
+    }
 
     public void mostrarTarefas() {
         tableview.setItems(FXCollections.observableArrayList());
         ObservableList<Tarefa> list = getTarefas();
         tableview.setItems(list);
-        colTitulo.setCellValueFactory(new PropertyValueFactory<Tarefa, String>("Titulo"));
-        colDescricao.setCellValueFactory(new PropertyValueFactory<Tarefa, String>("Descricao"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<Tarefa, String>("Status"));
-        colDataInicio.setCellValueFactory(new PropertyValueFactory<Tarefa, Date>("DataInicio"));
-        colDataVencimento.setCellValueFactory(new PropertyValueFactory<Tarefa, Date>("DataVencimento"));
-       colCategoria.setCellValueFactory(new PropertyValueFactory<Tarefa, Categoria>("categoria"));
-     colDisciplina.setCellValueFactory(new PropertyValueFactory<Tarefa, Disciplina>("disciplina"));
+
+        colTitulo.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
+        colDescricao.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        colDataInicio.setCellValueFactory(new PropertyValueFactory<>("DataInicio"));
+        colDataVencimento.setCellValueFactory(new PropertyValueFactory<>("DataVencimento"));
+        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        colDisciplina.setCellValueFactory(new PropertyValueFactory<>("disciplina"));
     }
 
-        public ObservableList<Tarefa> getTarefas(){
+    public ObservableList<Tarefa> getTarefas() {
         ObservableList<Tarefa> consults = FXCollections.observableArrayList();
         consults.addAll(TarefaService.listaTarefa());
         return consults;
     }
-
-
-    @FXML
-    private TableView<Tarefa> tableview;
 
     public void atualizarTabelaTarefas() {
         List<Tarefa> listaDeTarefas = carregarTarefasDoBanco();
@@ -102,32 +114,76 @@ public class ListaControler implements Initializable {
         }
     }
 
-
     @FXML
     void clickCategorizacao(ActionEvent event) {
         HelloApplication.mudaeTela3("categorizacao");
     }
 
-
     @FXML
     void clickEditar(ActionEvent event) {
-
+        // Lógica para editar tarefa
     }
 
     @FXML
     void clickExcluir(ActionEvent event) {
+        Tarefa tarefaSelecionada = tableview.getSelectionModel().getSelectedItem();
 
+        if (tarefaSelecionada != null) {
+            // Cria um diálogo de confirmação
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmação");
+            alert.setHeaderText("Tem certeza que deseja excluir a tarefa?");
+            alert.setContentText("Esta ação não pode ser desfeita.");
+
+            // Adiciona botões de sim e não
+            alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+            // Obtém a resposta do usuário
+            Optional<ButtonType> result = alert.showAndWait();
+
+            // Se o usuário clicou em "Sim", exclui a tarefa
+            if (result.isPresent() && result.get() == ButtonType.YES) {
+                excluirTarefa(tarefaSelecionada);
+            }
+        } else {
+            // Se nenhuma tarefa estiver selecionada, exibe um aviso
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Nenhuma tarefa selecionada");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione uma tarefa para excluir.");
+            alert.showAndWait();
+        }
+    }
+
+    private void excluirTarefa(Tarefa tarefa) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.beginTransaction();
+            session.delete(tarefa);
+            session.getTransaction().commit();
+            atualizarTabelaTarefas();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            exibirAlertaErro("Erro ao excluir tarefa", "Ocorreu um erro ao excluir a tarefa.");
+        }
+    }
+
+    private void exibirAlertaErro(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 
 
     @FXML
     void getData(MouseEvent event) {
+        // Lógica para obter dados ao clicar na tabela
     }
 
     @FXML
     void clickadd(ActionEvent event) {
-       HelloApplication.mudaeTela5("adicionar");
+        HelloApplication.mudaeTela5("adicionar");
         atualizarTabelaTarefas();
     }
-
 }
