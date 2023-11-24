@@ -121,7 +121,7 @@ public class ListaControler implements Initializable {
 
     @FXML
     void clickEditar(ActionEvent event) {
-        // Lógica para editar tarefa
+
     }
 
     @FXML

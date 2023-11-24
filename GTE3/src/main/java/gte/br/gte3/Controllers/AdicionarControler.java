@@ -46,6 +46,11 @@ public class AdicionarControler implements Initializable {
     @FXML
     private ComboBox<Disciplina> cbxDisciplina;
 
+    @FXML
+    void clickVoltar(ActionEvent event) {
+     HelloApplication.mudaeTela23("lista");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Teste");

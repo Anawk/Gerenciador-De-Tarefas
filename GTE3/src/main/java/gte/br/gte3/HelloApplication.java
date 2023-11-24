@@ -273,6 +273,34 @@ public class HelloApplication extends Application {
         }
     }
 
+    public static void mudaeTela21(String tela) {
+        if (tela == "adicionarcat") {
+            stagePrincipal.setScene(adicionarcatScene);
+        }
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+    }
+
+    public static void mudaeTela22(String tela) {
+        if (tela == "adicionardis") {
+            stagePrincipal.setScene(adicionardisScene);
+        }
+        if (tela == "categorizacao") {
+            stagePrincipal.setScene(categorizacaoScene);
+        }
+    }
+
+    public static void mudaeTela23(String tela) {
+        if (tela == "adicionar") {
+            stagePrincipal.setScene(adicionarScene);
+        }
+        if (tela == "lista") {
+            stagePrincipal.setScene(listaScene);
+        }
+    }
+
+
 
 
 

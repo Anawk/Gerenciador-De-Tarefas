@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="710.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.CategorizacaoControler">
+<AnchorPane prefHeight="710.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gte.br.gte3.Controllers.CategorizacaoControler">
     <children>
         <ImageView fitHeight="867.0" fitWidth="1264.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -21,12 +21,12 @@
         </ImageView>
         <TableView fx:id="TableDisci" layoutX="218.0" layoutY="143.0" prefHeight="410.0" prefWidth="323.0">
             <columns>
-                <TableColumn fx:id="nomeDis" prefWidth="102.0" text="Nome" />
+                <TableColumn fx:id="nomeDis" prefWidth="322.0" text="Nome" />
             </columns>
         </TableView>
         <TableView fx:id="Tablecat" layoutX="738.0" layoutY="143.0" prefHeight="410.0" prefWidth="323.0">
             <columns>
-                <TableColumn fx:id="nomeCat" prefWidth="105.0" text="Nome" />
+                <TableColumn fx:id="nomeCat" prefWidth="322.0" text="Nome" />
             </columns>
         </TableView>
         <Button layoutX="312.0" layoutY="572.0" mnemonicParsing="false" onAction="#clickAdicionarDisciplina" prefHeight="31.0" prefWidth="135.0" text="ADICIONAR" />
@@ -47,12 +47,12 @@
                     <stops>
                         <Stop>
                             <color>
-                                <Color red="0.21176470816135406" green="0.15294118225574493" blue="0.7098039388656616" />
+                                <Color blue="0.7098039388656616" green="0.15294118225574493" red="0.21176470816135406" />
                             </color>
                         </Stop>
                         <Stop offset="1.0">
                             <color>
-                                <Color red="1.0" blue="0.32549020648002625" />
+                                <Color blue="0.32549020648002625" red="1.0" />
                             </color>
                         </Stop>
                     </stops>

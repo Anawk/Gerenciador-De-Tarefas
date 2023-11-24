@@ -82,8 +82,8 @@ public class EditarControler {
 //        }
 //    }
 //
-//    @FXML
-//    void clickSalvar(ActionEvent event) {
+    @FXML
+    void clickSalvar(ActionEvent event) {
 //        System.out.print("Digite o nome da tarefa a ser editada: ");
 //        String nomeTarefaSelecionada = scanner.nextLine();
 //
@@ -123,5 +123,5 @@ public class EditarControler {
 //            // Atualize a tabela na ListaControler após a edição
 //            listaControler.atualizarTabelaTarefas();
 //        }
-//    }
+    }
 }

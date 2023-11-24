@@ -3,6 +3,7 @@ package gte.br.gte3.Controllers;
 import gte.br.gte3.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import gte.br.gte3.Model.Disciplina;
 import org.hibernate.Session;
@@ -13,6 +14,14 @@ public class AdicionarDisControler {
 
     @FXML
     private TextField nome;
+
+    @FXML
+    private Button voltar;
+
+    @FXML
+    void clickVoltar(ActionEvent event) {
+      HelloApplication.mudaeTela22("categorizacao");
+    }
 
     @FXML
     void clickSalvardIS(ActionEvent event) {
